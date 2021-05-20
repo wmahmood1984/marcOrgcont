@@ -1,0 +1,979 @@
+{
+  "contractName": "IRewardsDistributionRecipient",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "oldOwner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnerChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnerNominated",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "acceptOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "name": "nominateNewOwner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "nominatedOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardsDistribution",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "reward",
+          "type": "uint256"
+        }
+      ],
+      "name": "notifyRewardAmount",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_rewardsDistribution",
+          "type": "address"
+        }
+      ],
+      "name": "setRewardsDistribution",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"oldOwner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnerChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnerNominated\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"acceptOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"nominateNewOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"nominatedOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"reward\",\"type\":\"uint256\"}],\"name\":\"notifyRewardAmount\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rewardsDistribution\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_rewardsDistribution\",\"type\":\"address\"}],\"name\":\"setRewardsDistribution\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/D/fiverr/marchAngeloh/Assignment1/Integrated-pack/contracts/IRewardsDistributionRecipient.sol\":\"IRewardsDistributionRecipient\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/D/fiverr/marchAngeloh/Assignment1/Integrated-pack/contracts/IRewardsDistributionRecipient.sol\":{\"keccak256\":\"0x4c2021cbfc3a7f5eebb93c32c3d7e951411e8e8eec9d09309870301772ded91b\",\"urls\":[\"bzz-raw://7efaabf8fe7cd6a272e533612ae9429bf672cf749ec6cd65dd8718c60efe6a39\",\"dweb:/ipfs/QmX5Tv2thsWn6dy2noVLVHZXf6eWzMmxJdSGyFWTcrmm7W\"]},\"/D/fiverr/marchAngeloh/Assignment1/Integrated-pack/contracts/Owned.sol\":{\"keccak256\":\"0xa56e98f72195b4aafa303386af06f568f6f455b6b9cd42d5bf3db8a2f8ecb640\",\"urls\":[\"bzz-raw://3390785895e4bd887090b37db57a21c160db3ac34e88bc4147fb37eec2758032\",\"dweb:/ipfs/QmNRkfbetrrnEhBFreDHDMdPUWeLdjpjF3pqmQuQGe7Ldc\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.8.0;\r\n\r\nimport \"./Owned.sol\";\r\n\r\n\r\n// Inheritance\r\n// https://docs.synthetix.io/contracts/RewardsDistributionRecipient\r\nabstract contract IRewardsDistributionRecipient is Owned {\r\n    address public rewardsDistribution;\r\n\r\n    function notifyRewardAmount(uint256 reward) external virtual;\r\n\r\n    modifier onlyRewardsDistribution() {\r\n        require(msg.sender == rewardsDistribution, \"Caller is not RewardsDistribution contract\");\r\n        _;\r\n    }\r\n\r\n    function setRewardsDistribution(address _rewardsDistribution) external onlyOwner {\r\n        rewardsDistribution = _rewardsDistribution;\r\n    }\r\n}",
+  "sourcePath": "D:\\fiverr\\marchAngeloh\\Assignment1\\Integrated-pack\\contracts\\IRewardsDistributionRecipient.sol",
+  "ast": {
+    "absolutePath": "/D/fiverr/marchAngeloh/Assignment1/Integrated-pack/contracts/IRewardsDistributionRecipient.sol",
+    "exportedSymbols": {
+      "IRewardsDistributionRecipient": [
+        241
+      ],
+      "Owned": [
+        508
+      ]
+    },
+    "id": 242,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 206,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:3"
+      },
+      {
+        "absolutePath": "/D/fiverr/marchAngeloh/Assignment1/Integrated-pack/contracts/Owned.sol",
+        "file": "./Owned.sol",
+        "id": 207,
+        "nodeType": "ImportDirective",
+        "scope": 242,
+        "sourceUnit": 509,
+        "src": "27:21:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 208,
+              "name": "Owned",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 508,
+              "src": "190:5:3"
+            },
+            "id": 209,
+            "nodeType": "InheritanceSpecifier",
+            "src": "190:5:3"
+          }
+        ],
+        "contractDependencies": [
+          508
+        ],
+        "contractKind": "contract",
+        "fullyImplemented": false,
+        "id": 241,
+        "linearizedBaseContracts": [
+          241,
+          508
+        ],
+        "name": "IRewardsDistributionRecipient",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "3fc6df6e",
+            "id": 211,
+            "mutability": "mutable",
+            "name": "rewardsDistribution",
+            "nodeType": "VariableDeclaration",
+            "scope": 241,
+            "src": "203:34:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 210,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "203:7:3",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "functionSelector": "3c6b16ab",
+            "id": 216,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "notifyRewardAmount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 214,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 213,
+                  "mutability": "mutable",
+                  "name": "reward",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 216,
+                  "src": "274:14:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 212,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "274:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "273:16:3"
+            },
+            "returnParameters": {
+              "id": 215,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "306:0:3"
+            },
+            "scope": 241,
+            "src": "246:61:3",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 227,
+              "nodeType": "Block",
+              "src": "350:119:3",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 222,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "id": 219,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4294967281,
+                            "src": "369:3:3",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 220,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "src": "369:10:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "id": 221,
+                          "name": "rewardsDistribution",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 211,
+                          "src": "383:19:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "369:33:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "43616c6c6572206973206e6f742052657761726473446973747269627574696f6e20636f6e7472616374",
+                        "id": 223,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "404:44:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_d50b095422f4cbfcb4c90fbd4d55aaf0967bf1d90e94bb6a1ae9fc4ee7e733de",
+                          "typeString": "literal_string \"Caller is not RewardsDistribution contract\""
+                        },
+                        "value": "Caller is not RewardsDistribution contract"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_d50b095422f4cbfcb4c90fbd4d55aaf0967bf1d90e94bb6a1ae9fc4ee7e733de",
+                          "typeString": "literal_string \"Caller is not RewardsDistribution contract\""
+                        }
+                      ],
+                      "id": 218,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "361:7:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 224,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "361:88:3",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 225,
+                  "nodeType": "ExpressionStatement",
+                  "src": "361:88:3"
+                },
+                {
+                  "id": 226,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "460:1:3"
+                }
+              ]
+            },
+            "id": 228,
+            "name": "onlyRewardsDistribution",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 217,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "347:2:3"
+            },
+            "src": "315:154:3",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 239,
+              "nodeType": "Block",
+              "src": "558:61:3",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 237,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 235,
+                      "name": "rewardsDistribution",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 211,
+                      "src": "569:19:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 236,
+                      "name": "_rewardsDistribution",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 230,
+                      "src": "591:20:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "569:42:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 238,
+                  "nodeType": "ExpressionStatement",
+                  "src": "569:42:3"
+                }
+              ]
+            },
+            "functionSelector": "19762143",
+            "id": 240,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 233,
+                "modifierName": {
+                  "id": 232,
+                  "name": "onlyOwner",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 485,
+                  "src": "548:9:3"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "548:9:3"
+              }
+            ],
+            "name": "setRewardsDistribution",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 231,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 230,
+                  "mutability": "mutable",
+                  "name": "_rewardsDistribution",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 240,
+                  "src": "509:28:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 229,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "509:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "508:30:3"
+            },
+            "returnParameters": {
+              "id": 234,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "558:0:3"
+            },
+            "scope": 241,
+            "src": "477:142:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 242,
+        "src": "139:483:3"
+      }
+    ],
+    "src": "0:622:3"
+  },
+  "legacyAST": {
+    "absolutePath": "/D/fiverr/marchAngeloh/Assignment1/Integrated-pack/contracts/IRewardsDistributionRecipient.sol",
+    "exportedSymbols": {
+      "IRewardsDistributionRecipient": [
+        241
+      ],
+      "Owned": [
+        508
+      ]
+    },
+    "id": 242,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 206,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:3"
+      },
+      {
+        "absolutePath": "/D/fiverr/marchAngeloh/Assignment1/Integrated-pack/contracts/Owned.sol",
+        "file": "./Owned.sol",
+        "id": 207,
+        "nodeType": "ImportDirective",
+        "scope": 242,
+        "sourceUnit": 509,
+        "src": "27:21:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 208,
+              "name": "Owned",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 508,
+              "src": "190:5:3"
+            },
+            "id": 209,
+            "nodeType": "InheritanceSpecifier",
+            "src": "190:5:3"
+          }
+        ],
+        "contractDependencies": [
+          508
+        ],
+        "contractKind": "contract",
+        "fullyImplemented": false,
+        "id": 241,
+        "linearizedBaseContracts": [
+          241,
+          508
+        ],
+        "name": "IRewardsDistributionRecipient",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "3fc6df6e",
+            "id": 211,
+            "mutability": "mutable",
+            "name": "rewardsDistribution",
+            "nodeType": "VariableDeclaration",
+            "scope": 241,
+            "src": "203:34:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 210,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "203:7:3",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "functionSelector": "3c6b16ab",
+            "id": 216,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "notifyRewardAmount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 214,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 213,
+                  "mutability": "mutable",
+                  "name": "reward",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 216,
+                  "src": "274:14:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 212,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "274:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "273:16:3"
+            },
+            "returnParameters": {
+              "id": 215,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "306:0:3"
+            },
+            "scope": 241,
+            "src": "246:61:3",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 227,
+              "nodeType": "Block",
+              "src": "350:119:3",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 222,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "id": 219,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4294967281,
+                            "src": "369:3:3",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 220,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "src": "369:10:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "id": 221,
+                          "name": "rewardsDistribution",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 211,
+                          "src": "383:19:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "369:33:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "43616c6c6572206973206e6f742052657761726473446973747269627574696f6e20636f6e7472616374",
+                        "id": 223,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "404:44:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_d50b095422f4cbfcb4c90fbd4d55aaf0967bf1d90e94bb6a1ae9fc4ee7e733de",
+                          "typeString": "literal_string \"Caller is not RewardsDistribution contract\""
+                        },
+                        "value": "Caller is not RewardsDistribution contract"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_d50b095422f4cbfcb4c90fbd4d55aaf0967bf1d90e94bb6a1ae9fc4ee7e733de",
+                          "typeString": "literal_string \"Caller is not RewardsDistribution contract\""
+                        }
+                      ],
+                      "id": 218,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "361:7:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 224,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "361:88:3",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 225,
+                  "nodeType": "ExpressionStatement",
+                  "src": "361:88:3"
+                },
+                {
+                  "id": 226,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "460:1:3"
+                }
+              ]
+            },
+            "id": 228,
+            "name": "onlyRewardsDistribution",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 217,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "347:2:3"
+            },
+            "src": "315:154:3",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 239,
+              "nodeType": "Block",
+              "src": "558:61:3",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 237,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 235,
+                      "name": "rewardsDistribution",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 211,
+                      "src": "569:19:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 236,
+                      "name": "_rewardsDistribution",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 230,
+                      "src": "591:20:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "569:42:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 238,
+                  "nodeType": "ExpressionStatement",
+                  "src": "569:42:3"
+                }
+              ]
+            },
+            "functionSelector": "19762143",
+            "id": 240,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 233,
+                "modifierName": {
+                  "id": 232,
+                  "name": "onlyOwner",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 485,
+                  "src": "548:9:3"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "548:9:3"
+              }
+            ],
+            "name": "setRewardsDistribution",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 231,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 230,
+                  "mutability": "mutable",
+                  "name": "_rewardsDistribution",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 240,
+                  "src": "509:28:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 229,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "509:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "508:30:3"
+            },
+            "returnParameters": {
+              "id": 234,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "558:0:3"
+            },
+            "scope": 241,
+            "src": "477:142:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 242,
+        "src": "139:483:3"
+      }
+    ],
+    "src": "0:622:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-05-18T15:17:38.061Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

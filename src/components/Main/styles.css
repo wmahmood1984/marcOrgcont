@@ -1,0 +1,254 @@
+.header {
+  min-height: 34vw;
+  /* background-image: url("./images/header-with-text.png"); */
+  width: 100%;
+  background-size: auto 100%;
+}
+/** TVL Bar**/
+.tvl-bar {
+  margin: 40px 7% 0;
+  position: relative;
+  padding: 1% 7%;
+  display: flex;
+  align-items: center;
+}
+.tvl-bar::before {
+  content: "";
+  border-radius: 95px;
+  background-image: -moz-linear-gradient(-10deg, rgb(162, 0, 255) 0%, rgb(255, 82, 41) 100%);
+  background-image: linear-gradient(-10deg, rgb(162, 0, 255) 0%, rgb(255, 82, 41) 100%);
+  background-image: -webkit-linear-gradient(-10deg, rgb(162, 0, 255) 0%, rgb(255, 82, 41) 100%);
+  background-image: -ms-linear-gradient(-10deg, rgb(162, 0, 255) 0%, rgb(255, 82, 41) 100%);
+  opacity: 0.259;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  height: 100%;
+  top: 0;
+}
+
+.tvl-bar .icon {
+  width: 10%;
+  height: auto;
+}
+.tvl-bar .details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  height: 100%;
+  align-self: flex-start;
+  margin-left: 5%;
+}
+.tvl-bar .details .title,
+.tvl-bar .details .value {
+  font-family: "Cocogoose", serif;
+  font-size: 2.6vw;
+  text-align: left;
+}
+
+/** End TVL Bar**/
+
+/** Main Charts **/
+.main-charts {
+  margin: 50px 0px 30px;
+  background-repeat: no-repeat;
+  width: 100%;
+  background-size: 100% auto;
+  background-position: left center;
+  padding: 0 7%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  column-gap: 20px;
+  row-gap: 30px;
+}
+.main-charts .chart {
+  display: flex;
+  flex-direction: column;
+}
+.main-charts > .title {
+  font-family: "Cocogoose", serif;
+  padding: 0 3%;
+  text-transform: uppercase;
+  font-size: 5vw;
+  text-align: center;
+}
+.main-charts > .title:nth-child(2) {
+  grid-row: 3;
+}
+.main-charts > .title:nth-child(3) {
+  grid-row: 5;
+}
+.main-charts .chart .card {
+  background: #fff;
+  border-radius: 50px;
+  box-shadow: 2px 3.464px 7.65px 1.35px rgba(0, 0, 0, 0.18);
+  padding: 30px 35px 20px 30px;
+}
+.main-charts .chart .card > .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 15px;
+}
+.main-charts .chart .card > .title .image {
+  width: 25%;
+}
+.main-charts .chart .card > .title .text {
+  font-size: 15px;
+  color: rgb(33, 33, 33);
+  text-transform: uppercase;
+  font-family: "Cocogoose";
+}
+.main-charts .chart .card .details {
+  margin-top: 50px;
+}
+.main-charts .chart .card .details .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  font-family: serif;
+  font-size: 16px;
+}
+.main-charts .chart .card .details .item .label {
+  font-family: "CocogooseLight";
+  font-weight: bold;
+  text-align: left;
+}
+.main-charts .chart .card .details .item .value {
+  text-align: right;
+  position: relative;
+  margin-left: 20px;
+  font-family: "Raleway", serif;
+  font-size: 20px;
+  font-weight: 200;
+}
+.main-charts .chart .card .details .item.percent .value::after {
+  content: "%";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  text-align: right;
+}
+
+.main-charts .chart .card .details .stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 30px;
+}
+
+.main-charts .chart .card .btn {
+  background-image: -moz-linear-gradient(9deg, rgb(255, 96, 0) 0%, rgb(150, 0, 255) 99%);
+  background-image: linear-gradient(90deg, rgb(255, 96, 0) 0%, rgb(150, 0, 255) 99%);
+  background-image: -webkit-linear-gradient(9deg, rgb(255, 96, 0) 0%, rgb(150, 0, 255) 99%);
+  background-image: -ms-linear-gradient(9deg, rgb(255, 96, 0) 0%, rgb(150, 0, 255) 99%);
+  box-shadow: 2px 3.464px 7.65px 1.35px rgba(0, 0, 0, 0.18);
+  border-radius: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 8px 0px;
+  cursor: pointer;
+}
+.main-charts .chart .card .input {
+  border-radius: 15px;
+  border: 1px solid #000;
+  margin: 30px 0px 0px;
+  width: 100%;
+  height: 36px;
+  font-size: 18px;
+  padding: 0px 20px;
+  font-family: "Raleway", serif;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.main-charts .chart .card .input:focus {
+  outline: none;
+}
+.main-charts .chart .card .first-btns {
+  display: grid;
+  grid-template-columns: repeat(2, 45%);
+  justify-content: space-between;
+  max-width: 85%;
+  margin: 20px auto 10px;
+}
+.main-charts .chart .card .withdraw-btn {
+  max-width: 60%;
+  margin: 0px auto;
+}
+
+.main-charts .chart .countdown {
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  padding: 3% 4%;
+  margin-top: 10px;
+}
+.main-charts .chart .countdown .icon {
+  width: 16%;
+}
+.main-charts .chart .countdown .value {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: x-large;
+  margin-left: 5%;
+}
+
+.main-charts .chart.weekly .card {
+  border: 2px solid rgba(255, 63, 0, 0.639);
+}
+.main-charts .chart.weekly .card .input:focus {
+  border-color: rgba(255, 63, 0, 0.639);
+}
+.main-charts .chart.weekly .countdown {
+  background: rgba(255, 63, 0, 0.639);
+}
+.main-charts .chart.monthly .card {
+  border: 2px solid rgba(102, 0, 255, 0.639);
+}
+.main-charts .chart.monthly .countdown {
+  background: rgba(102, 0, 255, 0.639);
+}
+.main-charts .chart.monthly .card .input:focus {
+  border-color:  rgba(102, 0, 255, 0.639);
+}
+
+.main-charts .chart.yearly .card {
+  border: 2px solid rgba(102, 255, 0, 0.639);
+}
+.main-charts .chart.yearly .countdown {
+  background: rgba(102, 255, 0, 0.639);
+}
+.main-charts .chart.yearly .card .input:focus {
+  border-color: rgba(102, 255, 0, 0.639);
+}
+
+/** End Main Charts **/
+.footer {
+  font-family: "Cocogoose", serif;
+  min-height: 39vw;
+  width: 100%;
+  background-size: auto 39vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  padding: 30px 15vw 20vw;
+}
+.footer .text {
+  font-size: 6vw;
+  color: rgb(27, 27, 27);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+@media (min-width: 992px) {
+  .main-charts {
+    grid-template-columns: repeat(3, 1fr);
+    background-size: 30% auto;
+  }
+  .main-charts > .title {
+    font-size: 2.6vw;
+    grid-row: 1 !important;
+  }
+}

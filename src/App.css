@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'Cocogoose';
+  src: local('Cocogoose'), url("./fonts/Cocogoose.ttf") format('truetype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+@font-face {
+  font-family: 'CocogooseLight';
+  src: local('CocogoosePro'), url("./fonts/Cocogoose\ Ultralight.ttf") format('truetype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d118b9 #eee;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #d118b9;
+  border-radius: 20px;
+  border: 2px solid #eee;
+}
+
+*{
+  box-sizing: border-box;
+}
+.App {
+  text-align: center;
+}

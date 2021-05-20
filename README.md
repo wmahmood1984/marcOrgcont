@@ -1,0 +1,9 @@
+PCS V2: 0x3FB2dD9fC94fBf559794D5bDbD2A4920C0f2239c
+
+YOLO https://bscscan.com/address/0xDD110ce8CC33591E4A2eE75498BB599FFDa60cD9#code
+
+
+0xb036bec549db08a49c4221a51b732561eb49f3a4
+
+
+yolo https://api.pancakeswap.info/api/tokens/0xDD110ce8CC33591E4A2eE75498BB599FFDa60cD9

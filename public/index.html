@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Chrome, Firefox OS and Opera -->    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta name="theme-color" content="#d118b9" />
+        <!-- Windows Phone --> 
+         <meta name="msapplication-navbutton-color" content="#d118b9">  
+              <!-- iOS Safari --> 
+               
+   <meta name="apple-mobile-web-app-status-bar-style" content="#d118b9">
+    <title>Stake Your LP - YOLO Finance</title>
+<meta name="title" content="Stake Your LP - YOLO Finance">
+<meta name="description" content="Incentivizing long-term hodlers through LP staking and YOLO rewards through our DAO Fund. Simply the best DeFi altcoin on BSC">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Stake Your LP - YOLO Finance">
+<meta property="og:description" content="Incentivizing long-term hodlers through LP staking and YOLO rewards through our DAO Fund. Simply the best DeFi altcoin on BSC">
+<meta property="og:image" content="https://zen-goldwasser-3386c8.netlify.app/preview.png"/>
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="Stake Your LP - YOLO Finance">
+<meta property="twitter:description" content="Incentivizing long-term hodlers through LP staking and YOLO rewards through our DAO Fund. Simply the best DeFi altcoin on BSC">
+<meta property="twitter:image" content="https://zen-goldwasser-3386c8.netlify.app/preview.png"/>
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <style>
+    .lds-grid {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-grid div {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #d118b9;
+  animation: lds-grid 1.2s linear infinite;
+}
+.lds-grid div:nth-child(1) {
+  top: 8px;
+  left: 8px;
+  animation-delay: 0s;
+}
+.lds-grid div:nth-child(2) {
+  top: 8px;
+  left: 32px;
+  animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(3) {
+  top: 8px;
+  left: 56px;
+  animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(4) {
+  top: 32px;
+  left: 8px;
+  animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(5) {
+  top: 32px;
+  left: 32px;
+  animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(6) {
+  top: 32px;
+  left: 56px;
+  animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(7) {
+  top: 56px;
+  left: 8px;
+  animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(8) {
+  top: 56px;
+  left: 32px;
+  animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(9) {
+  top: 56px;
+  left: 56px;
+  animation-delay: -1.6s;
+}
+@keyframes lds-grid {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+body{
+  position:relative;
+  min-height:100vh;
+}
+#loader{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+}
+
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="loader">
+    <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
