@@ -6,7 +6,8 @@ import "./styles.css";
 import YearTimer from "./YearTimer";
 import MonthlyTimer from "./MonthlyTimer";
 import WeeklyTimer from "./WeeklyTimer";
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'; 
+import { initWeb3,YearlyApproval,MonthlyApproval,WeeklyApproval,YearlyStaking,MonthlyStaking,WeeklyStaking,YearlyWithdraw,MonthlyWithdraw,WeeklyWithdraw } from '../../store/adoptSlice';
 const labels = [
   {
     label: "Allocation:",
@@ -30,321 +31,186 @@ const labels = [
   },
 ];
 
-const Main = ({ headerImage, middleImage, footerImage, drizzle, drizzleState, price}) => {
-  
-  const [stackID, setStackID] = useState(null)
-  const [MstackID, setMStackID] = useState(null)
-  const [WstackID, setWStackID] = useState(null)
-  const [stackValue, setStackValue] = useState();
-  const [MstackValue, setMStackValue] = useState();
-  const [WstackValue, setWStackValue] = useState();
+const Main = ({ headerImage, middleImage, footerImage, price}) => {
+const dispatch = useDispatch()
+const [WstackValue, setWStackValue] = useState()
+const [MstackValue, setMStackValue] = useState()
+const [stackValue, setStackValue] = useState()
 
 
 
-  const setApprove = value => {
-    const contract = drizzle.contracts.PancakePair;
-    const sender = drizzleState.accounts[0];
-    const recepient = drizzle.contracts.YOLOYearly.address;
-
-    // let drizzle know we want to call the `set` method with `value`
-    //address sender, address recipient, uint256 amount
-    const stackId = contract.methods["approve"].cacheSend(recepient,stackValue, {
-      from: sender
-    });
-
-    // save the `stackId` for later reference
-    setStackID( stackId );
-  };
-  
-  const setMApprove = value => {
-    const contract = drizzle.contracts.PancakePair;
-    const sender = drizzleState.accounts[0];
-    const recepient = drizzle.contracts.YOLOMonthly.address;
-
-    // let drizzle know we want to call the `set` method with `value`
-    //address sender, address recipient, uint256 amount
-    const MstackId = contract.methods["approve"].cacheSend(recepient,MstackValue, {
-      from: sender
-    });
-
-    // save the `stackId` for later reference
-    setMStackID( MstackId );
-  };
-  const setWApprove = value => {
-    const contract = drizzle.contracts.PancakePair;
-    const sender = drizzleState.accounts[0];
-    const recepient = drizzle.contracts.YOLOWeekly.address;
-
-    // let drizzle know we want to call the `set` method with `value`
-    //address sender, address recipient, uint256 amount
-    const WstackId = contract.methods["approve"].cacheSend(recepient,WstackValue, {
-      from: sender
-    });
-
-    // save the `stackId` for later reference
-    setWStackID( WstackId );
-  };
-
-  const setStacking = value => {
-    //stake(uint256 amount)
-    const contract = drizzle.contracts.YOLOYearly;
-    const sender = drizzleState.accounts[0];
-    
-
-    // let drizzle know we want to call the `set` method with `value`
-    //address sender, address recipient, uint256 amount
-    const stackId = contract.methods["stake"].cacheSend(stackValue, {
-      from: sender
-    });
-
-    // save the `stackId` for later reference
-    setStackID( stackId );
-    setStackValue("")
-  };
-
-  const setMStacking = value => {
-    //stake(uint256 amount)
-    const contract = drizzle.contracts.YOLOMonthly;
-    const sender = drizzleState.accounts[0];
-    
-
-    // let drizzle know we want to call the `set` method with `value`
-    //address sender, address recipient, uint256 amount
-    const MstackId = contract.methods["stake"].cacheSend(MstackValue, {
-      from: sender
-    });
-
-    // save the `stackId` for later reference
-    setMStackID( MstackId );
-    setMStackValue("")
-  };
-
-  const setWStacking = value => {
-    //stake(uint256 amount)
-    const contract = drizzle.contracts.YOLOWeekly;
-    const sender = drizzleState.accounts[0];
-    
-
-    // let drizzle know we want to call the `set` method with `value`
-    //address sender, address recipient, uint256 amount
-    const WstackId = contract.methods["stake"].cacheSend(WstackValue, {
-      from: sender
-    });
-
-    // save the `stackId` for later reference
-    setWStackID( WstackId );
-    setWStackValue("")
-  };
-
-  const setwithdraw = value => {
-    const contract = drizzle.contracts.YOLOYearly;
-    const sender = drizzleState.accounts[0];
-    
-    // let drizzle know we want to call the `set` method with `value`
-    //address sender, address recipient, uint256 amount
-    const stackId = contract.methods["withdraw"].cacheSend(stackValue, {
-      from: sender
-    });
-
-    // save the `stackId` for later reference
-    setStackID( stackId );
-    setStackValue("")
-  };
-
-  const setMwithdraw = value => {
-    const contract = drizzle.contracts.YOLOMonthly;
-    const sender = drizzleState.accounts[0];
-    
-    // let drizzle know we want to call the `set` method with `value`
-    //address sender, address recipient, uint256 amount
-    const MstackId = contract.methods["withdraw"].cacheSend(MstackValue, {
-      from: sender
-    });
-
-    // save the `stackId` for later reference
-    setMStackID( MstackId );
-    setMStackValue("")
-  };
-
-  const setWwithdraw = value => {
-    const contract = drizzle.contracts.YOLOWeekly;
-    const sender = drizzleState.accounts[0];
-    
-    // let drizzle know we want to call the `set` method with `value`
-    //address sender, address recipient, uint256 amount
-    const WstackId = contract.methods["withdraw"].cacheSend(WstackValue, {
-      from: sender
-    });
-
-    // save the `stackId` for later reference
-    setWStackID( WstackId );
-    setWStackValue("")
-  };
 
 
-  const getTxStatus = () => {
-    // get the transaction states from the drizzle state
-    const { transactions, transactionStack } = drizzleState;
 
-    // get the transaction hash using our saved `stackId`
-    const txHash = transactionStack[stackID];
-
-    // if transaction hash does not exist, don't display anything
-    if (!txHash) return null;
-
-    // otherwise, return the transaction status
-    return `Transaction status: ${transactions[txHash] && transactions[txHash].status}`;
-  };
-
-  const getMTxStatus = () => {
-    // get the transaction states from the drizzle state
-    const { transactions, transactionStack } = drizzleState;
-
-    // get the transaction hash using our saved `stackId`
-    const txHash = transactionStack[MstackID];
-
-    // if transaction hash does not exist, don't display anything
-    if (!txHash) return null;
-
-    // otherwise, return the transaction status
-    return `Transaction status: ${transactions[txHash] && transactions[txHash].status}`;
-  };
-
-  const getWTxStatus = () => {
-    // get the transaction states from the drizzle state
-    const { transactions, transactionStack } = drizzleState;
-
-    // get the transaction hash using our saved `stackId`
-    const txHash = transactionStack[WstackID];
-
-    // if transaction hash does not exist, don't display anything
-    if (!txHash) return null;
-
-    // otherwise, return the transaction status
-    return `Transaction status: ${transactions[txHash] && transactions[txHash].status}`;
-  };
-
-  console.log("txstatus", getTxStatus())
-
-  //Calling Total supply 
-
-  const [dataKey, setdataKey] = useState()
-  const [dataKey2, setdataKey2] = useState()
-  const [dataKey3, setdataKey3] = useState()
-  const [dataKey4, setdataKey4] = useState()
-  const [dataKey5, setdataKey5] = useState()
-  const [dataKey6, setdataKey6] = useState()
-  const [dataKey7, setdataKey7] = useState()
-  const [dataKey8, setdataKey8] = useState()
-  const [dataKey9, setdataKey9] = useState()
-  const [dataKey10, setdataKey10] = useState()
-  const [dataKey11, setdataKey11] = useState()
-  const [dataKey12, setdataKey12] = useState()
-  const [dataKey13, setdataKey13] = useState()
-  const [dataKey14, setdataKey14] = useState()
-  const [dataKey15, setdataKey15] = useState()
-  var VS2$ = YOLO$*2;
-  var YOLO$ = price*10000;
-  console.log("price in main",price)
-  
-  useEffect(()=>{
-      
-    
-    const contractVS2 = drizzle.contracts.PancakePair;
-    const contractYOLO = drizzle.contracts.YOLO;
-    const sender = drizzleState.accounts[0];
-  
-    ///Yearly Data 
-    
-    // let drizzle know we want to watch the `myString` method
-    const contract = drizzle.contracts.YOLOYearly;
-    const dataKey = contract.methods["balanceOf"].cacheCall(sender);
-    const dataKey2 = contract.methods["rewardRate"].cacheCall();
-    const dataKey3 = contract.methods["rewardPerToken"].cacheCall();
-    const dataKey4 = contractVS2.methods["decimals"].cacheCall();
-    const dataKey5 = contract.methods["stakeTime"].cacheCall(sender);
-      
-  
-    // save the `dataKey` to local component state for later reference
-    setdataKey( dataKey );
-    setdataKey2( dataKey2)
-    setdataKey3( dataKey3)
-    setdataKey4( dataKey4)
-    setdataKey5(dataKey5)
-  
-
-  ///Monthly Data 
-
-        // let drizzle know we want to watch the `myString` method
-        const Mcontract = drizzle.contracts.YOLOMonthly;
-        const dataKey6 = Mcontract.methods["balanceOf"].cacheCall(sender);
-        const dataKey7 = Mcontract.methods["rewardRate"].cacheCall();
-        const dataKey8 = Mcontract.methods["rewardPerToken"].cacheCall();
-        const dataKey9 = contractVS2.methods["decimals"].cacheCall();
-        const dataKey10 = Mcontract.methods["stakeTime"].cacheCall(sender);
+const StakingToken = useSelector((state)=>{
+  return state.adoptReducer.VS2Contract;
+});
+const sender = useSelector((state)=>{
+  return state.adoptReducer.address;
+});
 
 
-        // save the `dataKey` to local component state for later reference
-        setdataKey6( dataKey6 );
-        setdataKey7( dataKey7)
-        setdataKey8( dataKey8)
-        setdataKey9( dataKey9)
-        setdataKey10(dataKey10)
 
 
-  ///Weekly Data 
+const YOLOYearly = useSelector((state)=>{
+  return state.adoptReducer.YearlyContract;
+});
 
-        // let drizzle know we want to watch the `myString` method
-        const Wcontract = drizzle.contracts.YOLOWeekly;
-        const dataKey11 = Wcontract.methods["balanceOf"].cacheCall(sender);
-        const dataKey12 = Wcontract.methods["rewardRate"].cacheCall();
-        const dataKey13 = Wcontract.methods["rewardPerToken"].cacheCall();
-        const dataKey14 = contractVS2.methods["decimals"].cacheCall();
-        const dataKey15 = Wcontract.methods["stakeTime"].cacheCall(sender);
+const address = useSelector((state)=>{
+  return state.adoptReducer.YearlyContractAddress;
+});
+
+const setApprove = (e)=>{
+  e.preventDefault()
+      dispatch(YearlyApproval({address,stackValue , StakingToken,sender}))
+
+}
+const setStacking = (e)=>{
+  e.preventDefault()
+  dispatch(YearlyStaking({stackValue,YOLOYearly,sender}))
+  setStackValue("")
+}
+const setwithdraw = (e)=>{
+  e.preventDefault()
+  dispatch(YearlyWithdraw({stackValue,YOLOYearly,sender}))
+  setStackValue("")
+}
 
 
-        // save the `dataKey` to local component state for later reference
-        setdataKey11( dataKey11 );
-        setdataKey12( dataKey12)
-        setdataKey13( dataKey13)
-        setdataKey14( dataKey14)
-        setdataKey15(dataKey15)
-
-      
-  },[])
 
 
-const { YOLOYearly,PancakePair,YOLOMonthly,YOLOWeekly } = drizzleState.contracts;
+
+
+const YOLOMonthly = useSelector((state)=>{
+  return state.adoptReducer.MonthlyContract;
+});
+
+const Maddress = useSelector((state)=>{
+  return state.adoptReducer.MOnthlyContractAddress;
+});
+
+
+const setMApprove = (e)=>{
+  e.preventDefault()
+      dispatch(MonthlyApproval({Maddress,MstackValue , StakingToken,sender}))
+}
+
+
+const setMStacking = (e)=>{
+  e.preventDefault()
+  dispatch(MonthlyStaking({MstackValue,YOLOMonthly,sender}))
+  setMStackValue("")
+}
+
+const setMwithdraw = (e)=>{
+  e.preventDefault()
+  dispatch(MonthlyWithdraw({MstackValue,YOLOMonthly,sender}))
+  setMStackValue("")
+}
+
+
+
+
+
+
+const YOLOWeekly = useSelector((state)=>{
+  return state.adoptReducer.WeeklyContract;
+});
+
+const Waddress = useSelector((state)=>{
+  return state.adoptReducer.WeeklyContractAddress;
+});
+
+
+const setWApprove = (e)=>{
+  e.preventDefault()
+      dispatch(WeeklyApproval({Waddress,WstackValue , StakingToken,sender}))
+}
+
+
+const setWStacking = (e)=>{
+  e.preventDefault()
+  dispatch(WeeklyStaking({WstackValue,YOLOWeekly,sender}))
+  setWStackValue("")
+}
+
+const setWwithdraw = (e)=>{
+  e.preventDefault()
+  dispatch(WeeklyWithdraw({WstackValue,YOLOWeekly,sender}))
+  setWStackValue("")
+}
+
+var VS2$ = price*2;
+var YOLO$ = price;
+
 
 // using the saved `dataKey`, get the variable we're interested in
-const balanceOf = YOLOYearly.balanceOf[dataKey];
-const Allocation = YOLOYearly.rewardRate[dataKey2];
-const RewardPerToken = YOLOYearly.rewardPerToken[dataKey3];
-const DecimalsVS2 = PancakePair.decimals[dataKey4];
-const StakeTime = YOLOYearly.stakeTime[dataKey5];
-
-
-const MbalanceOf = YOLOMonthly.balanceOf[dataKey6];
-const MAllocation = YOLOMonthly.rewardRate[dataKey7];
-const MRewardPerToken = YOLOMonthly.rewardPerToken[dataKey8];
-const MDecimalsVS2 = PancakePair.decimals[dataKey9];
-const MStakeTime = YOLOMonthly.stakeTime[dataKey10];
-
-
-const WbalanceOf = YOLOWeekly.balanceOf[dataKey11];
-const WAllocation = YOLOWeekly.rewardRate[dataKey12];
-const WRewardPerToken = YOLOWeekly.rewardPerToken[dataKey13];
-const WDecimalsVS2 = PancakePair.decimals[dataKey14];
-const WStakeTime = YOLOWeekly.stakeTime[dataKey15];
+var balanceOf = useSelector((state)=>{
+  return state.adoptReducer.balanceOfYearly;
+})
 
 
 
-//var factor1 =  balanceOf.value / 10**DecimalsVS2.value * VS2$;
+//const balanceOf = null;
+const Allocation = useSelector((state)=>{
+  return state.adoptReducer.rewardOfYearly;
+});
+const RewardPerToken = useSelector((state)=>{
+  return state.adoptReducer.rewardPerTokenYearly;
+});;
+
+console.log("reward",RewardPerToken)
+
+const decimalsOfVs2 = useSelector((state)=>{
+  return state.adoptReducer.decimalsOfVs2;
+});
+
+
+
+const StakeTime = useSelector((state)=>{
+  return state.adoptReducer.cacheTimeYearly;
+});
+
+
+const MbalanceOf = useSelector((state)=>{
+  return state.adoptReducer.balanceOfMonthly;
+})
+const MAllocation = useSelector((state)=>{
+  return state.adoptReducer.rewardOfMonthly;
+})
+const MRewardPerToken = useSelector((state)=>{
+  return state.adoptReducer.rewardPerTokenMonthly;
+});;;
+
+const MStakeTime = useSelector((state)=>{
+  return state.adoptReducer.cacheTimeMonthly;
+});;
+
+
+const WbalanceOf = useSelector((state)=>{
+  return state.adoptReducer.balanceOfWeekly;
+});
+const WAllocation = useSelector((state)=>{
+  return state.adoptReducer.rewardOfWeekly;
+});
+const WRewardPerToken = useSelector((state)=>{
+  return state.adoptReducer.rewardPerTokenWeekly;
+});;;
+
+
+
+const WStakeTime = useSelector((state)=>{
+  return state.adoptReducer.cacheTimeWeekly;
+});;
+
+
+
+//var factor1 =  balanceOf / 10**decimalsOfVs2 * VS2$;
  
-//var factor2 =  RewardPerToken.value == 0? 5000 / 10**9 : RewardPerToken.value / 10**9 * YOLO$;
+//var factor2 =  RewardPerToken == 0? 5000 / 10**9 : RewardPerToken / 10**9 * YOLO$;
 
 // var APR = (factor1 / factor2 * 100).toFixed()
-// console.log("balance of ", StakeTime.value )
+// console.log("balance of ", StakeTime )
 
  
 
@@ -387,7 +253,7 @@ const WStakeTime = YOLOWeekly.stakeTime[dataKey15];
           <img src={money} className="icon" alt="Money Icon" />
           <div className="details">
             <div className="title">TOTAL VALUE LOCKED</div>
-            <div className="">{balanceOf && MbalanceOf && WbalanceOf && (Number(balanceOf.value)+Number(MbalanceOf.value)+Number(WbalanceOf.value))}</div>
+            <div className="">{balanceOf && MbalanceOf && WbalanceOf && (Number(balanceOf)+Number(MbalanceOf)+Number(WbalanceOf))}</div>
           </div>
         </div>
         <div
@@ -412,8 +278,9 @@ const WStakeTime = YOLOWeekly.stakeTime[dataKey15];
                 <div className="item percent">
                   <div className="label">APR:</div>
                   <div className="value">
-                  {WbalanceOf && WDecimalsVS2 && WRewardPerToken && 
-(WbalanceOf.value / 10**WDecimalsVS2.value * VS2$ / Math.max(WRewardPerToken.value,0.00000000000000005) / 10**9 * YOLO$ *100).toFixed()}</div>
+                  {/* {(Number(WbalanceOf) / 10**(Number(decimalsOfVs2)) * VS2$ / Number(WRewardPerToken) / 10**9 * YOLO$ *100).toFixed()
+} */}{Number(WbalanceOf)/10**Number(decimalsOfVs2)*VS2$/ (WRewardPerToken/10**9* YOLO$) * 100}
+</div>
                 </div>
                 <div className="stats">
                   {/* {labels.map((item) => (
@@ -424,7 +291,7 @@ const WStakeTime = YOLOWeekly.stakeTime[dataKey15];
                   ))} */}
                 <div className={`item ${false ? "percent" : ""}`}>
                       <div className="label">Allocation</div>
-                      <div className="value">{WAllocation && WAllocation.value}</div>
+                      <div className="value">{WAllocation && WAllocation}</div>
                     </div>
                     <div className={`item ${false ? "percent" : ""}`}>
                       <div className="label">Stake Fee</div>
@@ -432,7 +299,7 @@ const WStakeTime = YOLOWeekly.stakeTime[dataKey15];
                     </div>
                     <div className={`item ${false ? "percent" : ""}`}>
                       <div className="label">Total Staked</div>
-                      <div className="value">{WbalanceOf && WbalanceOf.value}</div>
+                      <div className="value">{WbalanceOf && WbalanceOf}</div>
                     </div>
                     <div className={`item ${true ? "percent" : ""}`}>
                       <div className="label">Early UnStake Fee</div>
@@ -455,7 +322,7 @@ const WStakeTime = YOLOWeekly.stakeTime[dataKey15];
             </div>
             <div className="countdown">
               <img src={clock} className="icon" alt="Clock Icon" />
-              <div className="value"><WeeklyTimer stakeTime={WStakeTime && WStakeTime.value}></WeeklyTimer></div>
+              <div className="value"><WeeklyTimer stakeTime={WStakeTime && WStakeTime}></WeeklyTimer></div>
             </div>
           </div>
           <div className="chart monthly">
@@ -472,8 +339,7 @@ const WStakeTime = YOLOWeekly.stakeTime[dataKey15];
                 <div className="item percent">
                   <div className="label">APR:</div>
                   <div className="value">
-                  {MbalanceOf && MDecimalsVS2 && MRewardPerToken && 
-(MbalanceOf.value / 10**MDecimalsVS2.value * VS2$ / Math.max(MRewardPerToken.value,0.00000000000000005) / 10**9 * YOLO$ *100).toFixed()}</div>
+                  {Number(MbalanceOf)/10**Number(decimalsOfVs2)*VS2$/ (MRewardPerToken/10**9* YOLO$) * 100}</div>
                 </div>
                 <div className="stats">
                   {/* {labels.map((item) => (
@@ -484,7 +350,7 @@ const WStakeTime = YOLOWeekly.stakeTime[dataKey15];
                   ))} */}
                   <div className={`item ${false ? "percent" : ""}`}>
                       <div className="label">Allocation</div>
-                      <div className="value">{MAllocation && MAllocation.value}</div>
+                      <div className="value">{MAllocation && MAllocation}</div>
                     </div>
                     <div className={`item ${false ? "percent" : ""}`}>
                       <div className="label">Stake Fee</div>
@@ -492,7 +358,7 @@ const WStakeTime = YOLOWeekly.stakeTime[dataKey15];
                     </div>
                     <div className={`item ${false ? "percent" : ""}`}>
                       <div className="label">Total Staked</div>
-                      <div className="value">{MbalanceOf && MbalanceOf.value}</div>
+                      <div className="value">{MbalanceOf && MbalanceOf}</div>
                     </div>
                     <div className={`item ${true ? "percent" : ""}`}>
                       <div className="label">Early UnStake Fee</div>
@@ -513,7 +379,7 @@ const WStakeTime = YOLOWeekly.stakeTime[dataKey15];
             </div>
             <div className="countdown">
               <img src={clock} className="icon" alt="Clock Icon" />
-              <div className="value"><MonthlyTimer stakeTime={MStakeTime && MStakeTime.value}></MonthlyTimer></div>
+              <div className="value"><MonthlyTimer stakeTime={MStakeTime && MStakeTime}></MonthlyTimer></div>
             </div>
           </div>
           <div className="chart yearly">
@@ -530,8 +396,7 @@ const WStakeTime = YOLOWeekly.stakeTime[dataKey15];
                 <div className="item percent">
                   <div className="label">APR:</div>
                   <div className="value">
-{balanceOf && DecimalsVS2 && RewardPerToken && 
-(balanceOf.value / 10**DecimalsVS2.value * VS2$ / Math.max(RewardPerToken.value,0.00000000000000005) / 10**9 * YOLO$ *100).toFixed()}</div>
+                  {Number(balanceOf)/10**Number(decimalsOfVs2)*VS2$/ (RewardPerToken/10**9* YOLO$) * 100}</div>
                 </div>
                 <div className="stats">
                   {/* {labels.map((item) => (
@@ -542,7 +407,7 @@ const WStakeTime = YOLOWeekly.stakeTime[dataKey15];
                   ))} */}
                   <div className={`item ${false ? "percent" : ""}`}>
                       <div className="label">Allocation</div>
-                      <div className="value">{Allocation && Allocation.value}</div>
+                      <div className="value">{Allocation && Allocation}</div>
                     </div>
                     <div className={`item ${false ? "percent" : ""}`}>
                       <div className="label">Stake Fee</div>
@@ -550,7 +415,7 @@ const WStakeTime = YOLOWeekly.stakeTime[dataKey15];
                     </div>
                     <div className={`item ${false ? "percent" : ""}`}>
                       <div className="label">Total Staked</div>
-                      <div className="value">{balanceOf && balanceOf.value}</div>
+                      <div className="value">{balanceOf && balanceOf}</div>
                     </div>
                     <div className={`item ${true ? "percent" : ""}`}>
                       <div className="label">Early UnStake Fee</div>
@@ -572,7 +437,7 @@ const WStakeTime = YOLOWeekly.stakeTime[dataKey15];
             </div>
             <div className="countdown">
               <img src={clock} className="icon" alt="Clock Icon" />
-              <div className="value"><YearTimer stakeTime={StakeTime && StakeTime.value}></YearTimer></div>
+              <div className="value"><YearTimer stakeTime={StakeTime && StakeTime}></YearTimer></div>
             </div>
           </div>
         </div>

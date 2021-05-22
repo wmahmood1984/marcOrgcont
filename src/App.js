@@ -1,17 +1,26 @@
-import { useState, useEffect } from 'react';
-import "./App.css";
+import React,{useState, useEffect} from 'react';
+import './App.css'
 import Main from "./components/Main/Main";
+import { useDispatch, useSelector } from 'react-redux'; 
+import { initWeb3,loadArray } from './store/adoptSlice';
 import { isBot, useProgressiveImage } from "./helpers";
 import axios from 'axios'
 
-function App(props) {
+function App() {
+
+  
   const headerImage = useProgressiveImage("header-with-text.png");
   const footerImage = useProgressiveImage("footer-bg-characters.png");
   const middleImage = useProgressiveImage("middle-bg.png");
   const loading = !headerImage || !footerImage || !middleImage;
-  const [dloading, setLoading] = useState(true)
   const [price, setPrice] = useState()
-  const [drizzleState, setdrizzleState] = useState(null)
+  
+  const dispatch = useDispatch()
+  
+  // const contract = useSelector((state)=>{
+  //  return state.adoptReducer.contract
+  // })
+
   useEffect(
     function onLoaded() {
       if (isBot || !loading) {
@@ -21,25 +30,28 @@ function App(props) {
     },
     [loading]
   );
+
+
+  const address = useSelector((state)=>{
+      return state.adoptReducer.YearlyContract
+   })
+
+   const toggle = useSelector((state)=>{
+    return state.adoptReducer.toggle
+  })
+
+  console.log("contract",address)
+
+  // const myArray = useSelector((state)=>{
+  //   return state.adoptReducer.arrayResult
+  //  })
+
   useEffect(() => {
+    
+    dispatch(initWeb3())
+    
 
-    const { drizzle } = props;
-    const unsubscribe = drizzle.store.subscribe(()=>{
-
-      console.log("Drizzle =>>", drizzle)
-      const drizzleState = drizzle.store.getState();
-
-      console.log("drizzle state =>>", drizzleState)
-
-      // // check to see if it's ready, if so, update local component state
-      if (drizzleState.drizzleStatus.initialized) {
-        
-        setdrizzleState(drizzleState)
-        setLoading(false)
-
-
-
-        axios.get("https://api.pancakeswap.info/api/tokens/0xDD110ce8CC33591E4A2eE75498BB599FFDa60cD9")
+    axios.get("https://api.pancakeswap.info/api/tokens/0xDD110ce8CC33591E4A2eE75498BB599FFDa60cD9")
         //   // Handle a successful response from the server
            .then(response => {
         //           // Getting a data object from response that contains the necessary data from the server
@@ -51,36 +63,17 @@ function App(props) {
            })
         //   // Catch and print errors if any
            .catch(error => console.error('On create student error', error));
-
-
   
-      }
-    })
+    
+    // eslint-disable-next-line
+  }, [toggle])
 
-    return ()=>{
-      unsubscribe()
-    }
-  }, [])
+  // console.log("contract", contract)
+  // console.log("address", address)
+  // console.log("array", myArray)
 
-
-  // useEffect(function onMount() {
-  //   const metaImageURL = window.location.origin + "/preview.png";
-  //   const ogImage = document.createElement("meta");
-  //   ogImage.setAttribute("property", "og:image");
-  //   ogImage.setAttribute("content", metaImageURL);
-  //   const twitterImage = document.createElement("meta");
-  //   twitterImage.setAttribute("property", "twitter:image");
-  //   twitterImage.setAttribute("content", metaImageURL);
-  //   document.head.prepend(ogImage);
-  //   document.head.prepend(twitterImage);
-  //   return () => {
-  //     document.head.removeChild(ogImage);
-  //     document.head.removeChild(twitterImage);
-  //   };
-  // }, []);
-  //if (!isBot && loading) return null;
+//console.log("contract",address)
   
-  if (dloading) return "Loading Drizzle...";
 
   return (
     <div className={`App ${loading ? "loading" : ""}`}>
@@ -88,8 +81,8 @@ function App(props) {
         headerImage={headerImage}
         footerImage={footerImage}
         middleImage={middleImage}
-        drizzle = {props.drizzle}
-        drizzleState = {drizzleState}
+        //drizzle = {null}
+        //drizzleState = {null}
         price={price}
       />
       Hello world
@@ -98,9 +91,3 @@ function App(props) {
 }
 
 export default App;
-
-
-
-
-
-
